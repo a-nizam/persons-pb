@@ -1,0 +1,147 @@
+syntax = "proto3";
+package persons;
+
+option go_package = "/";
+
+service Persons {
+    rpc AddPerson(AddPersonRequest) returns (AddPersonResponse);
+    rpc GetPerson(GetPersonRequest) returns (GetPersonResponse);
+    rpc EditPerson(EditPersonRequest) returns (EditPersonResponse);
+    rpc RemovePerson(RemovePersonRequest) returns (RemovePersonResponse);
+    rpc GetList(GetListRequest) returns (stream GetListResponse);
+}
+
+message AddPersonRequest {
+    Person person = 1;
+}
+
+message AddPersonResponse {
+    int64 Id = 1;
+}
+
+message GetPersonRequest {
+    int64 Id = 1;
+}
+
+message GetPersonResponse {
+    Person person = 1;
+}
+
+message EditPersonRequest {
+    Person person = 1;
+}
+
+message EditPersonResponse {
+
+}
+
+message RemovePersonRequest {
+    int64 Id = 1;
+}
+
+message RemovePersonResponse {
+
+}
+
+message GetListRequest {
+
+}
+
+message GetListResponse {
+    Person person = 1;
+}
+
+message Car {
+    int64 id = 1;
+    int64 main_id = 2;
+    string type = 3;
+    string model = 4;
+    string number = 5;
+    string driver = 6;
+    string technic = 7;
+}
+
+message Doc {
+    int64 id = 1;
+    int64 main_id = 2;
+    string passport = 3;
+    string snils = 4;
+    string vbd = 5;
+    string green = 6;
+    string ksiva = 7;
+}
+
+message Family {
+    int64 id = 1;
+    int64 main_id = 2;
+    string rodstvo = 3;
+    string fio = 4;
+    string birth_date = 5;
+    string work_place = 6;
+    string union = 7;
+}
+
+message Housing {
+    int64 id = 1;
+    int64 main_id = 2;
+    string place_birth = 3;
+    string place_prop = 4;
+    string place_jitel = 5;
+    string obespechen = 6;
+}
+
+message Otpusk {
+    int64 id = 1;
+    int64 main_id = 2;
+    string type = 3;
+    string day_of = 4;
+    string day_st = 5;
+    string ride = 6;
+}
+
+message Phone {
+    int64 id = 1;
+    int64 main_id = 2;
+    string phone_number = 3;
+}
+
+message Slujba {
+    int64 id = 1;
+    int64 main_id = 2;
+    string date_st = 3;
+    string kontrakt = 4;
+    string cont = 5;
+    string naznach = 6;
+    string zvan = 7;
+    string attestac = 8;
+    string klassn = 9;
+}
+
+message Study {
+    int64 id = 1;
+    int64 main_id = 2;
+    string obrazovanie = 3;
+    string type = 4;
+    string ucheb_zaved = 5;
+    string napravlenie = 6;
+    string form = 7;
+    string date_st = 8;
+    string date_end = 9;
+}
+
+message Person {
+    int64 id = 1;
+    string full_name = 2;
+    string birth_date = 3;
+    string doljnost = 4;
+    string zvanie = 5;
+    string personal_number = 6;
+    repeated Car cars = 7;
+    repeated Doc docs = 8;
+    repeated Family family = 9;
+    Housing housing = 10;
+    repeated Otpusk otpusk = 11;
+    repeated Phone phones = 12;
+    Slujba slujba = 13;
+    repeated Study study = 14;
+}
